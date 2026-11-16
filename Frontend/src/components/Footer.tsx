@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
           {/* Middle: Email Link */}
           <div className="flex justify-start sm:justify-center">
             <a
-              href="mailto:[vinishdhilipan@gmail.com]"
+              href="mailto:vinishdhilipan@gmail.com"
               className="font-mono text-xs sm:text-[13px] text-neutral-300 hover:text-white underline underline-offset-4 decoration-neutral-600 hover:decoration-white transition-all cursor-pointer"
             >
               vinishdhilipan@gmail.com

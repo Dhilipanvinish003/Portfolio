@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
     if (errorMessage) setErrorMessage("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.firstName.trim() && !formData.lastName.trim()) {
@@ -85,10 +85,33 @@ const Contact: React.FC = () => {
     setStatus("transmitting");
     setErrorMessage("");
 
-    // Simulate node dispatch transmission
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName.trim(),
+          lastName: formData.lastName.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message. Please try again.");
+      }
+
       setStatus("success");
-    }, 1200);
+    } catch (err: unknown) {
+      const errorMsg =
+        err instanceof Error ? err.message : "Failed to deliver transmission. Please check your connection.";
+      setErrorMessage(errorMsg);
+      setStatus("idle");
+    }
   };
 
   const handleReset = () => {
@@ -103,13 +126,8 @@ const Contact: React.FC = () => {
     setErrorMessage("");
   };
 
-  // Live payload preview computations
+  // Full name for confirmation display
   const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim();
-  const senderDisplay = fullName ? `"${fullName}"` : "[Awaiting Name]";
-  const emailDisplay = formData.email.trim() ? `"${formData.email.trim()}"` : "[Awaiting Email]";
-  const messageDisplay = formData.message.trim()
-    ? `"${formData.message.trim()}"`
-    : `"[Awaiting Message]"`;
 
   return (
     <section
