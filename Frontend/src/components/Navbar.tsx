@@ -11,7 +11,6 @@ const NAV_LINKS: NavLink[] = [
   { name: "Expertise", link: "#expertise" },
   { name: "Skills", link: "#skills" },
   { name: "Projects", link: "#projects" },
-  { name: "Certifications", link: "#certifications" },
   { name: "Contact", link: "#contact" },
 ];
 
