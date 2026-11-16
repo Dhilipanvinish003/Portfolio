@@ -1,0 +1,18 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Node Dependencies & Build
+node_modules/
+Frontend/node_modules/
+Frontend/dist/
+dist/
+*.log
+
+# System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

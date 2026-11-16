@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* Metallic gradient text */
+.metallic-text {
+  background: linear-gradient(180deg, #FFFFFF 15%, #E5E7EB 50%, #9CA3AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.metallic-white {
+  background: linear-gradient(180deg, #FFFFFF 20%, #F3F4F6 60%, #D1D5DB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.metallic-chrome {
+  background: linear-gradient(180deg, #FFFFFF 0%, #D4D8E0 40%, #8A92A0 85%, #585F6D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Studio spotlight background gradient - seamlessly matching image tone with zero harsh shadows */
+.studio-spotlight-exact {
+  background: radial-gradient(
+    ellipse 62% 68% at 50% 45%,
+    #dcdfe5 0%,
+    #c8cdd8 22%,
+    #7a8292 46%,
+    #323742 66%,
+    #111317 84%,
+    #000000 100%
+  );
+}
